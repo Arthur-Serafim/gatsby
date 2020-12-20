@@ -37,9 +37,9 @@ export default function Header() {
               0
             </div>
           </div>
-          <div sx={styles.addToCartContainer} css={{ opacity: showCart ? 1 : 0 }}></div>
+          <div sx={styles.addToCartContainer} css={{ opacity: showCart ? 1 : 0, pointerEvents: showCart ? 'auto' : 'none' }}></div>
         </div>
-        <div onClick={() => setShowCart(false)} sx={styles.backgroundBlur} css={{ opacity: showCart ? 1 : 0 }} />
+        <div onClick={() => setShowCart(false)} sx={styles.backgroundBlur} css={{ opacity: showCart ? 1 : 0, pointerEvents: showCart ? 'auto' : 'none' }} />
       </Container>
     </header>
   )
