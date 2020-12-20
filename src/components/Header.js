@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 
 import { Container } from "../components/Grid"
 import ShoppingCart from '../images/elements/shopping-cart.svg'
+import ArrowBottom from '../images/elements/arrow-bottom.svg'
+import ArrowTop from '../images/elements/arrow-top.svg'
 import { useShowCart } from "../context/NavbarContext"
 
 export default function Header() {
@@ -31,8 +33,13 @@ export default function Header() {
           JAM SHOP
         </Link>
         <div sx={{ position: 'relative', padding: '0 5px', zIndex: 200 }}>
-          <div sx={{ cursor: 'pointer' }} onClick={() => setShowCart(!showCart)}>
-            <img src={ShoppingCart} alt="Vector Monitor" sx={styles.shoppingCart} />
+          <div sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setShowCart(!showCart)}>
+            <img src={ShoppingCart} alt="Shopping Cart" sx={styles.shoppingCart} />
+            {showCart ? (
+                <img src={ArrowTop} alt="Arrow Top" sx={styles.shoppingCart} sx={{ marginLeft: '15px', marginTop: '2px' }} />
+              ) : (
+                <img src={ArrowBottom} alt="Arrow Bottom" sx={styles.shoppingCart} sx={{ marginLeft: '15px', marginTop: '2px' }} />
+            )}
             <div sx={styles.cartCount} >
               0
             </div>
@@ -81,7 +88,7 @@ const styles = {
     color: 'white',
     width: '14px',
     top: '8px',
-    right: 0,
+    right: '20px',
   },
   addToCartContainer: {
     border: '2px solid #F5F5F5',
@@ -94,7 +101,7 @@ const styles = {
     bottom: '-290px',
     height: '100%',
     width: '281px',
-    left: '-125px',
+    right: 0,
   },
   backgroundBlur: {
     background: 'rgba(28, 4, 46, 0.55)',
