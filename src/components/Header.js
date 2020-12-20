@@ -1,10 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
+
 import { Container } from "../components/Grid"
 import ShoppingCart from '../images/elements/shopping-cart.svg'
+import { useShowCart } from "../context/NavbarContext"
 
 export default function Header() {
+  const { showCart, setShowCart } = useShowCart()
+
   return (
     <header sx={styles.header}>
       <Container
@@ -18,20 +22,24 @@ export default function Header() {
             "1320px",
             "1480px",
           ],
-          display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          display: 'flex',
         }}
       >
         <Link to="/" sx={styles.mainLink}>
           JAM SHOP
         </Link>
-        <div sx={{ position: 'relative', padding: '0 5px', cursor: 'pointer' }} >
-          <img src={ShoppingCart} alt="Vector Monitor" sx={styles.shoppingCart} />
-          <div sx={styles.cartCount} >
-            0
+        <div sx={{ position: 'relative', padding: '0 5px', zIndex: 200 }}>
+          <div sx={{ cursor: 'pointer' }} onClick={() => setShowCart(!showCart)}>
+            <img src={ShoppingCart} alt="Vector Monitor" sx={styles.shoppingCart} />
+            <div sx={styles.cartCount} >
+              0
+            </div>
           </div>
+          <div sx={styles.addToCartContainer} css={{ opacity: showCart ? 1 : 0 }}></div>
         </div>
+        <div onClick={() => setShowCart(false)} sx={styles.backgroundBlur} css={{ opacity: showCart ? 1 : 0 }} />
       </Container>
     </header>
   )
@@ -43,35 +51,60 @@ Header.defaultProps = {}
 
 const styles = {
   header: {
-    padding: "20px 0",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "1",
     background: "transparent",
+    position: "absolute",
+    padding: "20px 0",
+    width: "1",
+    left: 0,
+    top: 0,
   },
   mainLink: {
     variant: "text.link",
-    color: "white",
     fontWeight: "bold",
+    color: "white",
     fontSize: 22,
+    zIndex: 200
   },
   shoppingCart: {
     maxWidth: 1,
     margin: '0',
   },
   cartCount: {
+    justifyContent: 'center',
+    background: '#301346',
+    alignItems: 'center',
     position: 'absolute',
+    borderRadius: '50%',
+    display: 'flex',
+    fontSize: '8px',
+    height: '14px',
+    color: 'white',
+    width: '14px',
     top: '8px',
     right: 0,
-    width: '14px',
-    height: '14px',
-    borderRadius: '50%',
-    background: '#301346',
-    fontSize: '8px',
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+  },
+  addToCartContainer: {
+    border: '2px solid #F5F5F5',
+    boxSizing: 'border-box',
+    transition: 'all .5s',
+    background: '#220538',
+    position: 'absolute',
+    borderRadius: '4px',
+    minHeight: '276px',
+    bottom: '-290px',
+    height: '100%',
+    width: '281px',
+    left: '-125px',
+  },
+  backgroundBlur: {
+    background: 'rgba(28, 4, 46, 0.55)',
+    backdropFilter: 'blur(10px)',
+    transition: 'all .5s',
+    position: 'fixed',
+    zIndex: 100,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    top: 0,
   }
 }

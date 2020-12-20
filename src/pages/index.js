@@ -4,14 +4,25 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import Hero from "../components/HomePage/Hero"
 import { Container } from "../components/Grid"
+import NavbarProvider from '../context/NavbarContext'
+
+function Provider({ children }) {
+  return (
+    <NavbarProvider>
+      { children }
+    </NavbarProvider>
+  )
+}
 
 export default function IndexPage() {
   return (
-    <Layout>
-      <SEO title="Home" />
-      <Container>
-        <Hero />
-      </Container>
-    </Layout>
+    <Provider>
+      <Layout>
+        <SEO title="Home" />
+        <Container>
+          <Hero />
+        </Container>
+      </Layout>
+    </Provider>
   )
 }
