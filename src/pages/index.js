@@ -22,6 +22,8 @@ export default function IndexPage() {
         <SEO title="Home" />
         <Container>
           <Hero />
+        </Container>
+        <Container css={{ marginTop: '222px' }}>
           <ProductsDisplay />
         </Container>
       </Layout>
