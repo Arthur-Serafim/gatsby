@@ -6,14 +6,18 @@ import Hero from "../components/HomePage/Hero"
 import ProductsDisplay from "../components/HomePage/ProductsDisplay"
 import { Container } from "../components/Grid"
 import NavbarProvider from "../context/NavbarContext"
+import CartProvider from "../context/CartContext"
 import { graphql } from "gatsby"
 
 function Provider({ children }) {
-  return <NavbarProvider>{children}</NavbarProvider>
+  return (
+    <CartProvider>
+      <NavbarProvider>{children}</NavbarProvider>
+    </CartProvider>
+  )
 }
 
 export default function IndexPage({ data }) {
-
   return (
     <Provider>
       <Layout>
@@ -36,8 +40,10 @@ export const query = graphql`
         node {
           frontmatter {
             description
-            image
             name
+            image
+            price
+            slug
           }
         }
       }

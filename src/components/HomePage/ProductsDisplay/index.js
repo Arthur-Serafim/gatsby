@@ -7,11 +7,12 @@ import ArrowLeft from '../../../images/elements/arrow-left.svg'
 import ArrowRight from '../../../images/elements/arrow-right.svg'
 import Plus from '../../../images/elements/plus.svg'
 import './index.css'
+import { useCart } from "../../../context/CartContext"
 
 function HomepageProductsDisplay({ products }) {
-  React.useEffect(() => {
-    console.log(products)
+  const { cart, setCart } = useCart()
 
+  React.useEffect(() => {
     new Glider(document.querySelector(".glider"), {
       slidesToScroll: 1,
       slidesToShow: 4,
@@ -60,6 +61,10 @@ function HomepageProductsDisplay({ products }) {
     })
   }, [])
 
+  function handleAddToCart(product) {
+    setCart([...cart, product])
+  }
+
   return (
     <section sx={styles.section}>
       <h2 sx={styles.title}>Explore community choices</h2>
@@ -80,7 +85,7 @@ function HomepageProductsDisplay({ products }) {
                   <figcaption className="card-description">
                     {product.node.frontmatter.description}
                   </figcaption>
-                  <button className="card-button">
+                  <button className="card-button" onClick={() => handleAddToCart(product.node.frontmatter)}>
                     <img src={Plus} alt="Add to cart" />
                   </button>
                 </div>
