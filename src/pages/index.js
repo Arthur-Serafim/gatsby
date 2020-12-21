@@ -13,11 +13,7 @@ function Provider({ children }) {
 }
 
 export default function IndexPage({ data }) {
-  const [products, setProducts] = React.useState([])
-
-  React.useEffect(() => {
-    setProducts(data.allMarkdownRemark.edges)
-  }, [])
+  const products = data.allMarkdownRemark.edges
 
   return (
     <Provider>
@@ -27,7 +23,7 @@ export default function IndexPage({ data }) {
           <Hero />
         </Container>
         <Container css={{ marginTop: "222px" }}>
-          <ProductsDisplay />
+          <ProductsDisplay products={products} />
         </Container>
       </Layout>
     </Provider>
