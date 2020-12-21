@@ -24,3 +24,52 @@
     justify-content: center
   }
 }
+
+.card-image {
+  height: 90px;
+  width: 100%;
+}
+
+.card-description {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #C4C4C4;
+}
+
+.card-name {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #EEEEEE;
+}
+
+.card-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #AB528D;
+  border: none;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity .4s;
+}
+
+.card-button:hover {
+  opacity: .85;
+}
+
+.card-button:active {
+  transform: scale(0.95)
+}

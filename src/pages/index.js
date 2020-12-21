@@ -6,14 +6,13 @@ import Hero from "../components/HomePage/Hero"
 import ProductsDisplay from "../components/HomePage/ProductsDisplay"
 import { Container } from "../components/Grid"
 import NavbarProvider from "../context/NavbarContext"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 
 function Provider({ children }) {
   return <NavbarProvider>{children}</NavbarProvider>
 }
 
 export default function IndexPage({ data }) {
-  const products = data.allMarkdownRemark.edges
 
   return (
     <Provider>
@@ -23,7 +22,7 @@ export default function IndexPage({ data }) {
           <Hero />
         </Container>
         <Container css={{ marginTop: "222px" }}>
-          <ProductsDisplay products={products} />
+          <ProductsDisplay products={data.allMarkdownRemark.edges} />
         </Container>
       </Layout>
     </Provider>
@@ -31,7 +30,7 @@ export default function IndexPage({ data }) {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query Products {
     allMarkdownRemark {
       edges {
         node {

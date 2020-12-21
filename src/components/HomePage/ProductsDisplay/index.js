@@ -5,10 +5,13 @@ import "glider-js/glider.min.css"
 import Glider from "glider-js"
 import ArrowLeft from '../../../images/elements/arrow-left.svg'
 import ArrowRight from '../../../images/elements/arrow-right.svg'
+import Plus from '../../../images/elements/plus.svg'
 import './index.css'
 
 function HomepageProductsDisplay({ products }) {
   React.useEffect(() => {
+    console.log(products)
+
     new Glider(document.querySelector(".glider"), {
       slidesToScroll: 1,
       slidesToShow: 4,
@@ -68,15 +71,22 @@ function HomepageProductsDisplay({ products }) {
           <img src={ArrowLeft} alt="Show left cards" sx={{ height: '26px', objectFit: 'cover', marginRight: '5px' }} />
         </button>
         <div class="glider">
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
-          <figure sx={styles.card}>Teste</figure>
+          {products.map(product => {
+            return (
+              <figure sx={styles.card}>
+                <img className="card-image" src={require(`../../../${product.node.frontmatter.image}`)} alt={product.node.frontmatter.description}/>
+                <div>
+                  <h2 className="card-name">{product.node.frontmatter.name}</h2>
+                  <figcaption className="card-description">
+                    {product.node.frontmatter.description}
+                  </figcaption>
+                  <button className="card-button">
+                    <img src={Plus} alt="Add to cart" />
+                  </button>
+                </div>
+              </figure>
+            )
+          })}
         </div>
         <button className="glider-next glider-arrow" sx={styles.nextArrow}>
           <img src={ArrowRight} alt="Show right cards" sx={{ height: '26px', objectFit: 'cover', marginLeft: '5px' }} />
@@ -110,8 +120,13 @@ const styles = {
     border: "3px solid #969393",
     boxSizing: "border-box",
     borderRadius: "2px",
+    padding: '30px 22px',
     height: "273px !important",
-    width: '265px !important'
+    width: '265px !important',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    position: 'relative'
   },
   prevArrow: {
     left: '32px',
