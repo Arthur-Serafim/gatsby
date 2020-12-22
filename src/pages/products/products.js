@@ -22,41 +22,31 @@ export default function({ params, data }) {
     setLoaded(true)
   }, [])
 
-  function Provider({ children }) {
-    return (
-      <CartProvider>
-        <NavbarProvider>{children}</NavbarProvider>
-      </CartProvider>
-    )
-  }
-
   return (
-    <Provider>
-      <div>
-        <Header />
-        {loaded && (
-          <div sx={styles.productGrid}>
-            <div sx={styles.productItem} css={{ alignItems: "center" }}>
-              <img
-                css={{ height: "365px" }}
-                src={require(`../../${selectedProduct.image}`)}
-                alt={selectedProduct.description}
-              />
-            </div>
-            <Description selectedProduct={selectedProduct} styles={styles} />
+    <div>
+      <Header />
+      {loaded && (
+        <div sx={styles.productGrid}>
+          <div sx={styles.productItem} css={{ alignItems: "center" }}>
+            <img
+              sx={{ height: ["250px", '385px', '385px', '385px', "385px"] }}
+              src={require(`../../${selectedProduct.image}`)}
+              alt={selectedProduct.description}
+            />
           </div>
-        )}
-      </div>
-    </Provider>
+          <Description selectedProduct={selectedProduct} styles={styles} />
+        </div>
+      )}
+    </div>
   )
 }
 
 const styles = {
   productGrid: {
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridTemplateRows: "100%",
+    gridTemplateColumns: ["1fr", '1fr', '1fr', '1fr', "repeat(2, 1fr)"],
+    gridTemplateRows: ["max-content", 'max-content', 'max-content', 'max-content', "100%"],
     boxSizing: "border-box",
-    padding: "0 200px",
+    padding: ["200px 50px", '200px 100px', '200px 100px', '200px 100px', "0 200px"],
     gridGap: "140px",
     height: "100vh",
     display: "grid",
