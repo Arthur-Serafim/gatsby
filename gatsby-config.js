@@ -22,6 +22,10 @@ module.exports = {
         name: `products`,
       },
     },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/products/*`] },
+    },
     `gatsby-transformer-remark`,
     "gatsby-plugin-sharp",
     {

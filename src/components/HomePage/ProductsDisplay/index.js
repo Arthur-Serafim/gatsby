@@ -3,15 +3,12 @@ import { jsx } from "theme-ui"
 import React from "react"
 import "glider-js/glider.min.css"
 import Glider from "glider-js"
-import ArrowLeft from '../../../images/elements/arrow-left.svg'
-import ArrowRight from '../../../images/elements/arrow-right.svg'
-import Plus from '../../../images/elements/plus.svg'
-import './index.css'
-import { useCart } from "../../../context/CartContext"
+import ArrowLeft from "../../../images/elements/arrow-left.svg"
+import ArrowRight from "../../../images/elements/arrow-right.svg"
+import "./index.css"
+import Card from '../Card/index'
 
 function HomepageProductsDisplay({ products }) {
-  const { cart, setCart } = useCart()
-
   React.useEffect(() => {
     new Glider(document.querySelector(".glider"), {
       slidesToScroll: 1,
@@ -27,43 +24,39 @@ function HomepageProductsDisplay({ products }) {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
-          }
+          },
         },
         {
           breakpoint: 870,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
-          }
+          },
         },
         {
           breakpoint: 790,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
-          }
+          },
         },
         {
           breakpoint: 631,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
-          }
+          },
         },
         {
           breakpoint: 613,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-          }
+          },
         },
-      ]
+      ],
     })
   }, [])
-
-  function handleAddToCart(product) {
-    setCart([...cart, product])
-  }
 
   return (
     <section sx={styles.section}>
@@ -73,28 +66,25 @@ function HomepageProductsDisplay({ products }) {
       </h2>
       <div>
         <button className="glider-prev glider-arrow" sx={styles.prevArrow}>
-          <img src={ArrowLeft} alt="Show left cards" sx={{ height: '26px', objectFit: 'cover', marginRight: '5px' }} />
+          <img
+            src={ArrowLeft}
+            alt="Show left cards"
+            sx={{ height: "26px", objectFit: "cover", marginRight: "5px" }}
+          />
         </button>
         <div class="glider">
           {products.map(product => {
             return (
-              <figure sx={styles.card}>
-                <img className="card-image" src={require(`../../../${product.node.frontmatter.image}`)} alt={product.node.frontmatter.description}/>
-                <div>
-                  <h2 className="card-name">{product.node.frontmatter.name}</h2>
-                  <figcaption className="card-description">
-                    {product.node.frontmatter.description}
-                  </figcaption>
-                  <button className="card-button" onClick={() => handleAddToCart(product.node.frontmatter)}>
-                    <img src={Plus} alt="Add to cart" />
-                  </button>
-                </div>
-              </figure>
+              <Card styles={styles} product={product} />
             )
           })}
         </div>
         <button className="glider-next glider-arrow" sx={styles.nextArrow}>
-          <img src={ArrowRight} alt="Show right cards" sx={{ height: '26px', objectFit: 'cover', marginLeft: '5px' }} />
+          <img
+            src={ArrowRight}
+            alt="Show right cards"
+            sx={{ height: "26px", objectFit: "cover", marginLeft: "5px" }}
+          />
         </button>
       </div>
     </section>
@@ -125,19 +115,18 @@ const styles = {
     border: "3px solid #969393",
     boxSizing: "border-box",
     borderRadius: "2px",
-    padding: '30px 22px',
+    padding: "30px 22px",
     height: "273px !important",
-    width: '265px !important',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    position: 'relative'
+    width: "265px !important",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    position: "relative",
   },
   prevArrow: {
-    left: '32px',
-
+    left: "32px",
   },
   nextArrow: {
-    right: '32px',
-  }
+    right: "32px",
+  },
 }
