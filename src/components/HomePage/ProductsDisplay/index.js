@@ -122,6 +122,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
     position: "relative",
+    overflow: 'hidden'
   },
   prevArrow: {
     left: "32px",

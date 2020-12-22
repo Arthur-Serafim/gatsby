@@ -7,14 +7,6 @@ import { navigate } from "gatsby"
 import { useCart } from "../../../context/CartContext"
 
 export default function Card({ styles, product }) {
-  const { cart, setCart } = useCart()
-
-  function handleAddToCart(e) {
-    e.stopPropagation()
-
-    setCart([...cart, product.node.frontmatter])
-  }
-
   return (
     <figure
       sx={styles.card}
@@ -33,7 +25,6 @@ export default function Card({ styles, product }) {
         </figcaption>
         <button
           className="card-button"
-          onClick={e => handleAddToCart(e)}
         >
           <img src={Plus} alt="Add to cart" />
         </button>
