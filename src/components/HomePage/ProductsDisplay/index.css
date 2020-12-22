@@ -5,10 +5,10 @@
   height: 65px;
   width: 65px;
   background: rgba(255, 255, 255, 0.05);
-  border: 3px solid #FFFFFF;
+  border: 3px solid #ffffff;
   box-sizing: border-box;
   border-radius: 50%;
-  display: none
+  display: none;
 }
 
 @media only screen and (max-width: 960px) {
@@ -21,7 +21,7 @@
   .glider-arrow {
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
   }
 }
 
@@ -37,7 +37,7 @@
   font-size: 14px;
   line-height: 17px;
 
-  color: #C4C4C4;
+  color: #c4c4c4;
 }
 
 .card-name {
@@ -47,14 +47,14 @@
   font-size: 18px;
   line-height: 22px;
 
-  color: #EEEEEE;
+  color: #eeeeee;
 }
 
 .card-button {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background: #AB528D;
+  background: #ab528d;
   border: none;
   height: 44px;
   width: 44px;
@@ -63,13 +63,13 @@
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  transition: opacity .4s;
+  transition: opacity 0.4s;
 }
 
 .card-button:hover {
-  opacity: .85;
+  opacity: 0.85;
 }
 
 .card-button:active {
-  transform: scale(0.95)
+  transform: scale(0.95);
 }

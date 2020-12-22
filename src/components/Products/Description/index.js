@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from 'react'
 import { useCart } from "../../../context/CartContext"
 
 export default function Description({ selectedProduct, styles }) {

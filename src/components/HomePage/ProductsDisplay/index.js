@@ -6,7 +6,7 @@ import Glider from "glider-js"
 import ArrowLeft from "../../../images/elements/arrow-left.svg"
 import ArrowRight from "../../../images/elements/arrow-right.svg"
 import "./index.css"
-import Card from '../Card/index'
+import Card from "../Card/index"
 
 function HomepageProductsDisplay({ products }) {
   React.useEffect(() => {
@@ -74,9 +74,7 @@ function HomepageProductsDisplay({ products }) {
         </button>
         <div class="glider">
           {products.map(product => {
-            return (
-              <Card styles={styles} product={product} />
-            )
+            return <Card styles={styles} product={product} />
           })}
         </div>
         <button className="glider-next glider-arrow" sx={styles.nextArrow}>
@@ -122,7 +120,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
     position: "relative",
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   prevArrow: {
     left: "32px",

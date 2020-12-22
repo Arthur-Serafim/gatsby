@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
-import React from 'react'
-
 import { Container } from "../components/Grid"
 import ShoppingCart from "../images/elements/shopping-cart.svg"
 import ArrowBottom from "../images/elements/arrow-bottom.svg"

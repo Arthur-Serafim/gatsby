@@ -1,10 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from 'react'
-
 import Plus from "../../../images/elements/plus.svg"
 import { navigate } from "gatsby"
-import { useCart } from "../../../context/CartContext"
 
 export default function Card({ styles, product }) {
   return (
@@ -23,9 +20,7 @@ export default function Card({ styles, product }) {
         <figcaption className="card-description">
           {product.node.frontmatter.description}
         </figcaption>
-        <button
-          className="card-button"
-        >
+        <button className="card-button">
           <img src={Plus} alt="Add to cart" />
         </button>
       </div>

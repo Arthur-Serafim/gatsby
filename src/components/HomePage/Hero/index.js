@@ -19,7 +19,13 @@ function HomepageHero() {
             <br />
             on boring things
           </Styled.h1>
-          <button sx={{ variant: "button.primary", mx: ["auto", null, 0], cursor: 'pointer' }}>
+          <button
+            sx={{
+              variant: "button.primary",
+              mx: ["auto", null, 0],
+              cursor: "pointer",
+            }}
+          >
             GO EXPLORE
           </button>
         </Col>

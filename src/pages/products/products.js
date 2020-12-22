@@ -3,9 +3,7 @@ import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import React from "react"
 import Header from "../../components/Header"
-import NavbarProvider from "../../context/NavbarContext"
 import Description from "../../components/Products/Description"
-import CartProvider from "../../context/CartContext"
 
 export default function({ params, data }) {
   const [selectedProduct, setSelectedProduct] = React.useState({})
